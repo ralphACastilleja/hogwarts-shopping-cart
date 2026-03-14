@@ -86,12 +86,12 @@
 
 <script setup>
 import { computed, ref, watch } from 'vue'
-import dragonLiverImg from '@/assets/DragonLiver.png'
-import goldenSnitchImg from '@/assets/GoldenSnitch.png'
-import unicornTailImg from '@/assets/UnicornTailHair.png'
-import wandImg from '@/assets/Wand.jpg'
-import nimbusImg from '@/assets/Nimbus2000.jpg'
 
+import dragonLiverImg from './assets/DragonLiver.png'
+import goldenSnitchImg from './assets/GoldenSnitch.png'
+import unicornTailHairImg from './assets/UnicornTailHair.png'
+import wandImg from './assets/Wand.jpg'
+import nimbus2000Img from './assets/Nimbus2000.jpg'
 let username = 'Harry'
 let shoppingCartItems = ref([
   {
@@ -100,15 +100,14 @@ let shoppingCartItems = ref([
     price: 1500,
     isInStock: true,
     quantity: 3,
-    image: 'src/assets/DragonLiver.png'
-  },
+    image: dragonLiverImg  },
   {
     id: 2,
     productName: 'Golden Snitch',
     price: 600,
     isInStock: true,
     quantity: 2,
-    image: ' src/assets//GoldenSnitch.png'
+    image: ' src/assets/GoldenSnitch.png'
   },
   {
     id: 3,
@@ -155,11 +154,9 @@ function increaseOne(id) {
 }
 
 function removeItem(id) {
-  // Step 1: find the index of the item to be deleted
   let index = shoppingCartItems.value.findIndex((item) => {
     return item.id == id
   })
-  // Step 2: delete this item from the list
   shoppingCartItems.value.splice(index, 1)
 }
 let subtotal = computed(() =>
@@ -177,7 +174,6 @@ let total = computed(
   () => subtotal.value + shippingEstimate.value + taxEstimate.value
 )
 
-// Automatically save to localStorage whenever any part of shoppingCartItems changes
 watch(
   shoppingCartItems,
   () => {
@@ -360,7 +356,6 @@ h1 {
   cursor: pointer;
   margin-top: 10px;
   transition: all 0.2s;
-  /* smooth transition in and out */
 }
 
 .checkout-button:hover {
